@@ -5,7 +5,7 @@ using Persistencia.Data;
 
 namespace Aplicacion.Repository
 {
-    public class UserRepository : GenericRepository<User>, IUser
+    public class UserRepository : GenericRepository<User>, IUser 
     {
         private readonly RetoContext _context;
         public UserRepository(RetoContext context) : base(context)
@@ -13,7 +13,13 @@ namespace Aplicacion.Repository
             _context = context;
         }
 
-        public async Task<User> GetByUserNameAsync(string userName)
+        public Task<User> GetByRefreshTokenAsync(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public async Task<User> GetByUserNameAsync(string refreshToken)
         {
             return await _context.Users
                                     .Include(u => u.Rols)
